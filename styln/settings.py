@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     # 'main',
     'storages',
+    'home',
     # required for serving swagger ui's css/js files
     # 'drf_yasg',
 ]
@@ -178,8 +179,8 @@ REST_FRAMEWORK = {
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
+    'backends.OTPAuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
-    'backends.OTPAuthenticationBackend'
 )
 
 

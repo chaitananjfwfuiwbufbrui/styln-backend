@@ -53,6 +53,9 @@ class OTPVerifyView(APIView):
             # If OTP verification is successful, set phone_number_verified to True
             user.phone_number_verified = True
             user.otp = None
+            user.is_active = True
+            user.is_staff = True
+            user.is_superuser = True
             user.save()
             refresh = RefreshToken.for_user(user)
             data = {

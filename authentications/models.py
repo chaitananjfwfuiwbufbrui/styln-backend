@@ -62,7 +62,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     address = models.CharField(max_length=200)
     otp = models.CharField(max_length=6, blank=True, null=True,default= '100')  # Add the otp field
     phone_number_verified = models.BooleanField(default=False)
-
+    image = models.ImageField(upload_to='user/profile',default = "https://cdn-icons-png.flaticon.com/512/219/219988.png")
     objects = UserAccountManager()
 
     USERNAME_FIELD = 'email'

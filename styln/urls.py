@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('main/', include('main.urls')),
     path('auth/', include('djoser.urls')),
+    path('home/', include('home.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('auth/', include('djoser.social.urls')),
     path('api/token/otp/', OTPVerifyView.as_view(), name='otp-login'),
