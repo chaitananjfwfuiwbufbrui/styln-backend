@@ -176,10 +176,11 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
-    'backends.OTPAuthenticationBackend',
+    'styln.backends.OTPAuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
