@@ -69,7 +69,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     objects = UserAccountManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['user_name',  'phone_number']
+    REQUIRED_FIELDS = ['user_name',  'phone_number','city','state']
 
     # Method to generate and save OTP to the user
     def generate_otp(self):
@@ -79,10 +79,10 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
         self.otp_expiry = timezone.now() + datetime.timedelta(minutes=5)
         self.save()
     def get_full_name(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.user_name}"
 
     def get_short_name(self):
-        return self.first_name
+        return self.user_name
     
     def __str__(self):
         return self.email

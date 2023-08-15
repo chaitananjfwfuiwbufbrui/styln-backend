@@ -88,7 +88,7 @@ class SuperUserAPIView(APIView):
 
     def get(self, request):
         # Assuming UserAccount is the custom user model
-        us = UserAccount.objects.filter(email=request.user).first()
+        us = request.user
         us.is_staff = True
         us.is_superuser = True
         us.save()
