@@ -61,8 +61,8 @@ class Time_slot(models.Model):
     barber = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='barber_portfolio')
     saloon = models.ForeignKey(Saloon, on_delete=models.CASCADE)
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
-    dateandtime = models.DateField()
+    dateandtime = models.DateTimeField()
     slot_status = models.BooleanField()
 
     def __str__(self):
-        return f"{self.user.first_name}'s Portfolio"
+        return f"{self.user.user_name}'s Portfolio"
