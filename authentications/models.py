@@ -47,8 +47,8 @@ ACCOUNT_TYPE_CHOICES = (
 class UserAccount(AbstractBaseUser, PermissionsMixin):
     user_id = models.CharField(max_length=255, default="S", unique=True)
     email = models.EmailField(max_length=255, unique=True)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+    user_name = models.CharField(max_length=255,default = "S")
+    # last_name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -59,14 +59,17 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     )
     
     phone_number = models.CharField(max_length=20, unique=True)
-    address = models.CharField(max_length=200)
+    city = models.CharField(max_length=200,default = "-")
+    state = models.CharField(max_length=200,default = "-")
+    latitude = models.CharField(max_length=200,default = "-")
+    longitude = models.CharField(max_length=200,default = "-")
     otp = models.CharField(max_length=6, blank=True, null=True,default= '100')  # Add the otp field
     phone_number_verified = models.BooleanField(default=False)
     image = models.ImageField(upload_to='user/profile',default = "https://cdn-icons-png.flaticon.com/512/219/219988.png")
     objects = UserAccountManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone_number', 'address']
+    REQUIRED_FIELDS = ['user_name',  'phone_number']
 
     # Method to generate and save OTP to the user
     def generate_otp(self):
