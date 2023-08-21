@@ -31,4 +31,14 @@ class PortfolioSerializer(serializers.ModelSerializer):
 class Time_slotSerializer(serializers.ModelSerializer):
     class Meta:
         model = Time_slot
-        fields = '__all__'
+class booking_seralizer(serializers.ModelSerializer):
+    slot_det = serializers.SerializerMethodField('slot_query')
+    def slot_query(self,obj):
+        ques_detailes = Time_slot.object.filter(id = obj.slot.id)
+        serializer = UserCreateSerializer(ques_detailes)
+        return serializer.data
+
+    class Meta:
+        model = Booking
+        fields = ['slot','slot_det','payment_status','dateandtime','payment_id',]
+        # fields = '__all__'

@@ -63,6 +63,16 @@ class Time_slot(models.Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     dateandtime = models.DateTimeField()
     slot_status = models.BooleanField()
-
+    
     def __str__(self):
         return f"{self.user.user_name}'s Portfolio"
+class Booking(models.Model):
+    slot = models.ForeignKey(Time_slot, on_delete=models.CASCADE)
+    dateandtime = models.DateTimeField()
+    payment_status = models.BooleanField()
+    payment_id =models.CharField( max_length=50)
+    def __str__(self):
+        return f"{self.user.user_name}'s booked on {self.dateandtime}"
+
+
+
