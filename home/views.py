@@ -68,3 +68,4 @@ class Lcation_taker(APIView):
 
         message = {"message": "location  saved"}
         return JsonResponse(message, status=status.HTTP_200_OK)
+  
