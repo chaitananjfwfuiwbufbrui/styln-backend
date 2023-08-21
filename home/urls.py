@@ -3,7 +3,8 @@ from .views import *
 
 urlpatterns = [
     path('saloon/', SaloonListCreateView.as_view(), name='saloon-list-create'),
-    path('Lcation_taker/', Lcation_taker.as_view(), name='Lcation_taker'),
+    path('Location_taker/', LocationTaker.as_view(), name='LocationTaker'),
+    path('booking/<int:pid>/', Booking_view.as_view(), name='Booking'),
     path('saloon/<int:pk>/', SaloonDetailView.as_view(), name='saloon-detail'),
     path('saloon/<int:id>/services/', ServicesAPI.as_view(), name='saloon-services'),
     path('saloon/<int:id>/portfolio/', PortfolioAPI.as_view(), name='saloon-portfolio'),
