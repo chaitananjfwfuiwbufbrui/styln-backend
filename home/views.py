@@ -25,6 +25,7 @@ class ServicesAPI(APIView):
         serializer = ServiceSerializer(services, many=True)
         return Response(serializer.data)
 
+
 class PortfolioAPI(APIView):
     permission_classes = [permissions.IsAuthenticated]
     parser_classes = (MultiPartParser, FormParser, FileUploadParser)
@@ -33,7 +34,11 @@ class PortfolioAPI(APIView):
         saloon = Saloon.objects.get(id=id)
         portfolios = Portfolio.objects.filter(saloon=saloon)
         serializer = PortfolioSerializer(portfolios, many=True)
-        return Response(serializer.data)
+        data = {
+            'count': portfolios.count(),
+            'data': serializer.data
+        }
+        return Response(data)
 
 class TimeSlotAPI(APIView):
     permission_classes = [permissions.IsAuthenticated]

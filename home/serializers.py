@@ -17,7 +17,8 @@ class SaloonSIngle_Serializer(serializers.ModelSerializer):
 
     class Meta:
         model = Saloon
-        fields = ['name','prize','barber_detailes','distance','rating','is_ac','image','facilities','phone','email','website','timings','available_for','sallon_staff']
+        # fields = ['name','prize','barber_detailes','distance','rating','is_ac','image','facilities','phone','email','website','timings','available_for','sallon_staff']
+        fields = '__all__'
 
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:

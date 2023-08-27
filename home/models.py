@@ -1,28 +1,34 @@
 from django.db import models
 from django.conf import settings
 
+from django.db import models
+from django.conf import settings
+
 class Saloon(models.Model):
     # Attributes of the salon
     name = models.CharField(max_length=100)
-    prize = models.DecimalField(max_digits=8, decimal_places=2)
-    distance = models.CharField(max_length = 15)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    distance = models.CharField(max_length=15)
     rating = models.FloatField()
-    is_ac = models.BooleanField(default=False)  # True if the salon is air-conditioned, False otherwise
+    is_ac = models.BooleanField(default=False)
     image = models.ImageField(upload_to='saloon_images/')
-    facilities = models.TextField()
+    facilities = models.TextField()  # This will be stored as a comma-separated list
 
     # Contact details
     phone = models.CharField(max_length=15)
     email = models.EmailField()
-    website = models.CharField(max_length=100)  # Increase the max_length to a suitable value
-
+    website = models.CharField(max_length=100)
+    
     # Timings of the salon
     timings = models.CharField(max_length=100)
 
-   
-    available_for = models.CharField(max_length=1, )
+    # Additional fields
+    latitude = models.DecimalField(max_digits=9, decimal_places=6)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6)
+    address = models.TextField()
+    discount = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 
-    # Salon staff (assuming usermodel is your custom user model)
+    available_for = models.TextField()  # Storing as a JSON array
     sallon_staff = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
     def __str__(self):
