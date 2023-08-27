@@ -12,7 +12,7 @@ class SaloonSIngle_Serializer(serializers.ModelSerializer):
     barber_detailes = serializers.SerializerMethodField('QUES')
     def QUES(self,obj):
         ques_detailes = obj.sallon_staff.all()
-        serializer = UserCreateSerializer(ques_detailes,many = True)
+        serializer = user_setailed_ser(ques_detailes,many = True)
         return serializer.data
 
     class Meta:

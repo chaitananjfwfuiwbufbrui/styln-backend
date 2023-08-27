@@ -67,7 +67,8 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     phone_number_verified = models.BooleanField(default=False)
     image = models.ImageField(upload_to='user/profile',default = "https://cdn-icons-png.flaticon.com/512/219/219988.png")
     objects = UserAccountManager()
-
+    role = models.CharField(default = "baber", max_length=50,blank = True,null = True)
+    experiance = models.CharField(default = "1", max_length=50,blank = True,null = True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['user_name',  'phone_number','city','state']
 
